@@ -4,8 +4,10 @@
   "description": "testy jednostkowe",
   "main": "index.js",
   "scripts": {
-    "test": "mocha index.test.js",
-    "test:watch": "mocha -w -b index.test.js"
+    "test": "mocha -w -b *.test.js",
+    "test:distance": "mocha -w calculateDistancePoints.test.js",
+    "test:style": "mocha -w calculateStylePoints.test.js",
+    "test:total": "mocha -w calculateTotalPoints.test.js"
   },
   "repository": {
     "type": "git",
