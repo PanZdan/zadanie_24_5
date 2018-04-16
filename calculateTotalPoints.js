@@ -1,11 +1,21 @@
-const calculateDistancePoints = require('./calculateDistancePoints');
-const calculateStylePoints = require('./calculateStylePoints');
+const calculateDistancePoints = require("./calculateDistancePoints");
+const calculateStylePoints = require("./calculateStylePoints");
 
-const calculateTotalPoints = (distance, hillSize, kPoint, styleNotes, windFactor, gateFactor) => {
+const calculateTotalPoints = (
+  distance,
+  hillSize,
+  kPoint,
+  styleNotes,
+  windFactor,
+  gateFactor
+) => {
+  if (typeof windFactor !== "number") {
+    return "wrong type of windFactor";
+  }
   const distancePoints = calculateDistancePoints(distance, hillSize, kPoint);
   const stylePoints = calculateStylePoints(styleNotes);
 
-  return distancePoints + stylePoints + windFactor + gateFactor;
-}
+  return (distancePoints + stylePoints + windFactor + gateFactor).toFixed(1);
+};
 
 module.exports = calculateTotalPoints;
