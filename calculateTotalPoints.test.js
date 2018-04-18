@@ -36,11 +36,21 @@ describe('Total test for hillSize', () => {
     });
   });
   describe('sky flying', () => {
-    it('should return when windFactor is not a number', () => {
+    it('should return if any parameter is wrong', () => {
 
-      const actual = calculateTotalPoints(100, 'sky flying', 200, styleNotes, "3.6", 2.5 );
+      const actual = calculateTotalPoints(100, 'sky flying', 200, styleNotes, 3.6, "2.5" );
 
-      const expected = 'wrong type of windFactor';
+      const expected = 'wrong type of parameter';
+
+      assert.equal(actual, expected);
+    });
+  });
+  describe('sky flying', () => {
+    it('should return if hillSize is wrong', () => {
+
+      const actual = calculateTotalPoints(100, 'sky', 200, styleNotes, 3.6, 2.5 );
+
+      const expected = 'wrong type of hillSize';
 
       assert.equal(actual, expected);
     });

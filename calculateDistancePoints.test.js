@@ -79,6 +79,34 @@ describe('Distance test for hillSize', () => {
       const expected = '120';
 
       assert.equal(actual, expected);
+    });    
+    it('should return an error if the hillSize name is wrong', () => {
+      const actual = calculateDistancePoints(200, 'sky', 200);
+
+      const expected = 'wrong type of hillSize';
+
+      assert.equal(actual, expected);
+    });
+    it('should return an error if the distance typ of is not a number', () => {
+      const actual = calculateDistancePoints("200", 'sky', 200);
+
+      const expected = 'wrong type of parameter';
+
+      assert.equal(actual, expected);
+    });
+    it('should return an error if the hillSize typ of is not a string', () => {
+      const actual = calculateDistancePoints(200, 1, 200);
+
+      const expected = 'wrong type of parameter';
+
+      assert.equal(actual, expected);
+    });
+    it('should return an error if the kPoint typ of is not a number', () => {
+      const actual = calculateDistancePoints(200, 'sky', "200");
+
+      const expected = 'wrong type of parameter';
+
+      assert.equal(actual, expected);
     });
   });
 });

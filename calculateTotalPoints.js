@@ -9,13 +9,21 @@ const calculateTotalPoints = (
   windFactor,
   gateFactor
 ) => {
-  if (typeof windFactor !== "number") {
-    return "wrong type of windFactor";
+  if (
+    typeof windFactor !== "number" ||
+    typeof gateFactor !== "number"
+  ) {
+    return "wrong type of parameter";
   }
+
   const distancePoints = calculateDistancePoints(distance, hillSize, kPoint);
   const stylePoints = calculateStylePoints(styleNotes);
 
-  return (distancePoints + stylePoints + windFactor + gateFactor).toFixed(1);
+  if (isFinite(distancePoints)) {
+    return (distancePoints + stylePoints + windFactor + gateFactor).toFixed(1);
+  } else {
+    return "wrong type of hillSize";
+  }
 };
 
 module.exports = calculateTotalPoints;
